@@ -41,9 +41,9 @@ Go to Cloudwatch => Metrics => Linux System => InstanceId
 
 ### Compare Volume types
 
-![Image of instance types](Screenshot 2020-06-28 at 20.09.45.png)
+![Image of instance types](https://github.com/jeffvdv/Mynotes/blob/master/Screenshot%202020-06-28%20at%2020.09.45.png)
 
-![Image of instance types](Screenshot 2020-06-28 at 20.13.58.png)
+![Image of instance types](https://github.com/jeffvdv/Mynotes/blob/master/Screenshot%202020-06-28%20at%2020.13.58.png)
 
 ### IOPS
 
