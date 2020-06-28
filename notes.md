@@ -1,6 +1,6 @@
-#Monitoring & Reporting
+# Monitoring & Reporting
 
-##EC2
+## EC2
 Default Cloudwatch metrics EC2:
 
 - CPU
@@ -37,15 +37,15 @@ echo "*/1 *   * * *   root    /home/admin/aws-scripts-mon/mon-put-instance-data.
 
 Go to Cloudwatch => Metrics => Linux System => InstanceId
 
-##EBS
+## EBS
 
-###Compare Volume types
+### Compare Volume types
 
 ![Image of instance types](Screenshot 2020-06-28 at 20.09.45.png)
 
 ![Image of instance types](Screenshot 2020-06-28 at 20.13.58.png)
 
-###IOPS
+### IOPS
 
 gp2:
 
@@ -89,7 +89,7 @@ What this basically means is just read every data block which has data on your e
 You can adjust the volume type, size and IOPS on the fly.
 If you adjust the volume size, you must manually expand the filesystem.
 
-##ELB
+## ELB
 
 Cloudwatch monitors performance (Metrics)
 
@@ -102,7 +102,7 @@ Once EC2 instances have been deleted, there is no way to recover nginx access lo
 
 You can use Request tracing on an ALB. It adds or updates the X-Amzn-Trace-id header before sending it through.
 
-##ElasticCache
+## ElasticCache
 
 Standard monitoring:
 
@@ -111,12 +111,12 @@ Standard monitoring:
 - Evictions
 - Concurrent Connections
 
-###CPU
+### CPU
 Memcached is multi-threaded and can handle loads of up to 90%. Add more nodes to the cluster when it exceeds 90%.
 
 Redis is not multi-threaded. To determine the threshold in which to scale, take 90 and devide by the number of cores.
 
-###Swap
+### Swap
 
 If you use 4 Gb of RAM, use 4 Gb of Swapfile
 
@@ -126,27 +126,27 @@ Increase the memory of your memcached.
 
 With Redis no SwapUsage metric is shown, instead it uses reserved-memory
 
-###Evictions
+### Evictions
 Evictions => remove data when no new data can be stored.
 
 Memcached => no recommended setting, either scale up or scale out.
 
 Redis => only option the scale out by adding read replicas
 
-###Concurrent Connections
+### Concurrent Connections
 No recommended settings. If there is a spike, this is due a spike in traffic or your application
 is not releasing connections as it should (Set an alarm on the number of connections).
 
-##Multiple Regions & Custom Dashboard
+## Multiple Regions & Custom Dashboard
 
 Dashboards are internationally! You have to change region if you want a widget with metrics from that region.
 
-##Create a billing alarm
+## Create a billing alarm
 
 Cloudwatch => Create billing alarm => Select time check => Define threshold in USD => Select SNS create topic => Enter your e-mailadres
 => Confirm email-address.
 
-##AWS Organizations
+## AWS Organizations
 
 Allows you to manage multiple AWS accounts:
 
@@ -236,7 +236,7 @@ Compliance checks:
 AWS Config needs Read only permissions to the recorded resources, write access to S3 logging bucket
 and publish access to SNS.
 
-##Health Dashboards
+## Health Dashboards
 (https://status.aws.amazon.com/)
 
 Service Health Dashboard => Show the health of each AWS Service as a whole per region
