@@ -384,7 +384,7 @@ Loadbalancer have default Cloudwatch metrics and also for the backends
      - Documents (Create your own documents / view existing)
      - Parameter Store (secrets)
  
-##Placement Groups
+## Placement Groups
 
 By default AWS places instances across different physical hardware.
 This minimizes the impact of a hardware failure.
