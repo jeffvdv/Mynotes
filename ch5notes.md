@@ -150,6 +150,156 @@ WAF integrates with:
 
 NOT: Classic loadbalancer or network loadbalancer (not Layer 7)
 
+## AWS Hypervisors
+
+Choose HVM over PV where possible
+
+EC2 runs on Xen Hypervisor
+
+PV => paravirtualization
+
+- ring 0: Xen Hypervisor
+- ring 1: Guest OS (Ec2 instance)
+- ring 3: Applications
+
+### Isolation
+
+AWS does not have access to layer 1
+
+Layers:
+
+- Physical interface
+- Firewall:
+    - security groups (on hypervisor level)
+- Virtual Interface
+- Hypervisor
+- EC2
+
+Memory Scrubbing is performed on blocks storage (EBS) and memory (set to 0) before other customer can use it.
+
+## EC2 Dedicated Instances vs. Dedicated Hosts
+
+### Dedicated Instance
+
+- physical isolated hardware
+- Charged by the instance
+- May share the same hardware with other AWS instances from the same account
+
+### Dedicated Hosts
+
+- physical isolated hardware
+- Charged by the host
+- Choose when license conditions
+- Visibility of sockets, cores, host ID
+
+## AWS Systems Manager EC2 Run Command
+
+- Enables you to run patches, installations, ... on a number of EC2 instances and on premise systems
+without having to log in.
+- Add a role to your EC2 instances (EC2 Role for SSM)
+- SSM agent needs to be installed on the instances
+- In SSM go to run Command
+- Select Installation (f.e. Configure Cloudwatch)
+- Specify tag or manually select instances
+- Run
+
+## Pre-signed URLs with S3
+
+- Use cli or SDK for creating pre-signed urls
+- Default is 1 hour
+
+```bash
+aws s3 presign s3://[bucketname]/[file] --expires-in [time-in-seconds]
+```
+
+## S3 - Restrict IP Addresses
+
+- Create bucket policy with Condition
+
+```json
+...
+"Condition":{
+  "IpAddress": {"aws:SourceIp": "10.0.12.0/24"},
+  "NotIpAddress": {"aws:SourceIp": "54.240.143.188/32"}
+}
+```
+
+## AWS Config with S3
+
+- Go to AWS Config
+- Add Rule
+- Add s3-bucket-public-read-prohibited and s3-bucket-public-write-prohibited
+
+## Inspector vs Trusted Advisor
+
+### AWS Inspector
+
+- Go to Inspector
+- Create a role with EC2:describeInstances
+- Install agents on EC2 Instances
+- Tag your ec2 instances
+- Create Assessment Target (specify your tags)
+- Create Assessment template
+    - Rules packages
+        - Common Vulnerabilities and Exposures
+        - CIS Operating System Security Configuration Benchmarks
+        - Security Best Practices
+        - Runtime Behavior Analysis
+    - Duration (1 hour recommended)
+- Perform Assessment run
+- Review Findings against Rules (Download Report - Explanation what was tested)
+
+You can create a master template that will run every 24 hour (You can notify with SNS)
+
+### AWS Trusted Advisor
+
+- Reduce costs
+- Increase performance
+- Improve Security
+- Fault tolerance
+
+You have basic plan and business plan
+
+## Service Limits
+
+- Check Trusted Advisor for Service Limits
+
+## Other Security Aspects
+
+AWS artifacts => submit security and compliance documents (SOC)
+
+Instant encryption: S3
+Encryption with migration: DynamoDB, RDS, EFS, EBS
+
+## Cloudtrail - Turning it on and validating logs
+
+What is logged:
+- Metadata API Call
+- The identity of the API caller
+- time
+- Source ip
+- request parameters
+- response by the service
+
+Stored in S3 => You have to manage policies (takes 5 minutes to 15 minutes).
+Not visible unless you create a trail.
+
+You can aggregate logs across regions and accounts
+
+By default enabled for 7 days.
+
+Digest logs are being created inside the S3 bucket. It is used to check whether or not files
+in the cloudtrail bucket have been altered. It does this by storing hash (SHA-256 hasing).
+
+## Cloudtrail - Protecting Logs
+
+Cloudtrail logs may contain personal data:
+- Create s3 bucket policies
+- Create IAM group to allow access to that s3 only for these users.
+- You can use S3 MFA
+- Add lifecycle policies to store older logs to Glacier
+- Encryption is done by default
+
 
 
 
