@@ -148,14 +148,14 @@ to forward traffic within the VLAN of the provider switches.
 
 ### BGP Prefix Advertisements
 
-####Customer to AWS:
+#### Customer to AWS:
 
 - VIFs have maximum number of prefixes that can be advertised:
   - Private VIFs - 100
   - Public VIFs - 1000
 - Exceeding this limit will cuase the BGP sessions to go to the IDLE state
 
-####AWS to Customer:
+#### AWS to Customer:
 - VGWs associated with private VIFs advertise all known routes.
 - VGWs associated with DX gateways must specify allowed prefixes to be advertised.
   - Only CIDRs matching - or smaller than - listed prefixes will be advertised
@@ -167,7 +167,7 @@ to forward traffic within the VLAN of the provider switches.
   - Filter outbound traffic with ACLs or firewalls
   - Filter learned prefixes using BGP communities
   
-####BGP communities:
+#### BGP communities:
 
 - A means of labelling BGP prefixes
 - BGP routers can be configured to handle incoming or outgoing prefixes based on their community values.
