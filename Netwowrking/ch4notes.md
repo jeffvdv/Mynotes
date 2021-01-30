@@ -83,7 +83,7 @@ connection supporting dynamic routing.
 ## BGP Prefix Preference Control
 BGP cannot sense network quality
 
-- heighest path is only used on the local BGP router (not shared)
+- heighest weight is only used on the local BGP router (not shared)
 - heighest local preference is shared only to other iBGP routers with the same ASN 
 (remember to change the weight to 0 on the other router)
 - VGW cannot not be configured => How can we modify the traffic?
