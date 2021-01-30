@@ -31,7 +31,7 @@ VPC sharing allows a subnet in one AWS account to be shared with other AWS accou
 
 #### Transit VPC Routing
 
-[image Transit-VPC-routing.png]
+![Image of instance types](https://github.com/jeffvdv/Mynotes/blob/master/Networking/assets/Transit-VPC-routing.png)
 
 - Dynamic routing is strongly recommended but is not a requirement.
 - Spoke VPC VGWs advertise their local CIDR prefix to transit VPC VPN systems.
@@ -55,7 +55,7 @@ VPC sharing allows a subnet in one AWS account to be shared with other AWS accou
     - Can connect to a Direct Connect Gateway
     - Up to 10 VGWs in any public region may connect to a DX Gateway (Except China)
 
-[image Floating-VGW-DX-connection.png]
+![Image of instance types](https://github.com/jeffvdv/Mynotes/blob/master/Networking/assets/Floating-VGW-DX-connection.png)
 
 - If Direct Connect traffic must pass through the transit VPC, then a detached VGW must be
 created in the region the DX location connects to.
@@ -208,7 +208,7 @@ attachment for outbound traffic.
 
 ### Isolated VPCs
 
-[image isolated-vpcs.png]
+![Image of instance types](https://github.com/jeffvdv/Mynotes/blob/master/Networking/assets/isolated-vpcs.png)
 
 ### Routing conflicts
 

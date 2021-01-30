@@ -25,7 +25,7 @@
 Important: Source/destination addresses will always be the internal primary private ip address
 associated with the EMI
 
-[image vpc-flow-logs.png]
+![Image of instance types](https://github.com/jeffvdv/Mynotes/blob/master/Networking/assets/vpc-flow-logs.png)
 
 Not captured in VPC Flow Logs:
 - AWS DNS

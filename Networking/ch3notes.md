@@ -88,7 +88,7 @@ ALBs and NLBs support SNI or the ability to have multiple certificates per liste
 
 ## Amazon Workspaces
 
-[image workspaces-architecture.png]
+![Image of instance types](https://github.com/jeffvdv/Mynotes/blob/master/Networking/assets/workspaces-architecture.png)
 
 - Desktop as a service (Windows desktop)
 - spin up in minimum 2 AZs

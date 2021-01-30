@@ -66,7 +66,7 @@ BGP table:
 - Weight (default 32768, weight 0 if learned)
 - Path (default i <= internal route)
 
-![alt text](https://github.com/jeffvdv/Mynotes/blob/master/Netwowrking/Screenshot%202020-11-23%20at%2016.31.08.png "BGP routing")
+![Image of instance types](https://github.com/jeffvdv/Mynotes/blob/master/Networking/assets/BGP-prefixes-routing.png)
 
 Selection best route:
 1. Heighest weight
